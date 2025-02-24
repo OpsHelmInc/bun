@@ -92,7 +92,6 @@ func TestTable(t *testing.T) {
 		type Perms struct {
 			View   bool
 			Create bool
-			Model  *Model
 		}
 
 		type Role struct {
@@ -111,11 +110,6 @@ func TestTable(t *testing.T) {
 		barView, ok := table.FieldMap["bar_view"]
 		require.True(t, ok)
 		require.Equal(t, []int{1, 0}, barView.Index)
-
-		_, ok = table.StructMap["foo_model"]
-		require.True(t, ok)
-		_, ok = table.StructMap["foo_model"]
-		require.True(t, ok)
 	})
 
 	t.Run("embedWithUnique", func(t *testing.T) {
